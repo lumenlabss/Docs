@@ -1,444 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LumenLabs - Docs - LumenOne</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@0.276.0/dist/umd/lucide.min.js"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-        background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-        min-height: 100vh;
-        background-attachment: fixed;
-      }
 
-      .glass {
-        background: rgba(30, 41, 59, 0.7);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LumenLabs - Docs - LumenOne Installation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --primary: #3b82f6;
+      --primary-light: #60a5fa;
+      --dark: #111827;
+      --darker: #0a0e1a;
+    }
 
-      .sidebar {
-        background: rgba(15, 23, 42, 0.8);
-        backdrop-filter: blur(12px);
-        border-right: 1px solid rgba(255, 255, 255, 0.1);
-      }
+    body {
+      font-family: "Inter", sans-serif;
+      background: linear-gradient(135deg, var(--darker), var(--dark));
+      color: #f3f4f6;
+      min-height: 100vh;
+    }
 
-      .sidebar-link {
-        transition: all 0.3s ease;
-        border-left: 2px solid transparent;
-      }
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-      .sidebar-link:hover {
-        background: rgba(56, 189, 248, 0.1);
-        border-left-color: rgba(56, 189, 248, 0.5);
-      }
+    .glass {
+      background: rgba(17, 24, 39, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
 
-      .sidebar-link.active {
-        background: rgba(56, 189, 248, 0.1);
-        border-left-color: rgb(56, 189, 248);
-      }
+    .sidebar {
+      background: rgba(10, 14, 26, 0.8);
+      backdrop-filter: blur(12px);
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
 
-      .code-block {
-        background: rgba(15, 23, 42, 0.6);
-        border: 1px solid rgba(56, 189, 248, 0.2);
-      }
+    .sidebar-link {
+      transition: all 0.3s ease;
+      border-right: 2px solid transparent;
+    }
 
-      .toc-link {
-        transition: all 0.3s ease;
-        border-left: 2px solid transparent;
-      }
+    .sidebar-link:hover {
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--primary-light);
+    }
 
-      .toc-link:hover,
-      .toc-link.active {
-        color: rgb(56, 189, 248);
-        border-left-color: rgb(56, 189, 248);
-      }
-    </style>
-  </head>
-  <body class="text-slate-50">
-    <div class="flex min-h-screen">
-      <aside class="sidebar w-64 fixed h-screen overflow-y-auto">
-        <div class="p-6">
-          <a href="/" class="flex items-center gap-2 mb-8">
-            <!--<i data-lucide="code" class="h-6 w-6 text-sky-400"></i>-->
-            <span class="font-semibold text-lg">LumenOne</span>
-          </a>
+    .sidebar-link.active {
+      background: rgba(59, 130, 246, 0.15);
+      color: var(--primary-light);
+      border-right-color: var(--primary);
+    }
 
-          <div class="mb-8">
-            <h3
-              class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3"
-            >
-              Getting Started
-            </h3>
-            <nav class="space-y-1">
-              <a
-                href="introduction.html"
-                class="sidebar-link block px-4 py-2 text-sm"
-              >
-                Introduction
-              </a>
-              <a
-                href="installation.html"
-                class="sidebar-link active block px-4 py-2 text-sm"
-              >
-                Installation
-              </a>
-              <a
-                href="webserver.html"
-                class="sidebar-link block px-4 py-2 text-sm"
-              >
-                WebServer
-              </a>
-            </nav>
-          </div>
+    .code-block {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 1.25rem;
+      font-family: 'Fira Code', monospace;
+      position: relative;
+      overflow-x: auto;
+    }
 
-          <!--<div class="mb-8">
-            <h3
-              class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3"
-            >
-              Fundamentals
-            </h3>
-            <nav class="space-y-1">
-              <a
-                href="/docs/basics.html"
-                class="sidebar-link active block px-4 py-2 text-sm"
-              >
-                HTML Basics
-              </a>
-              <a
-                href="/docs/elements.html"
-                class="sidebar-link block px-4 py-2 text-sm"
-              >
-                Elements
-              </a>
-              <a
-                href="/docs/attributes.html"
-                class="sidebar-link block px-4 py-2 text-sm"
-              >
-                Attributes
-              </a>
-            </nav>
-          </div>
+    .code-block pre {
+      margin: 0;
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
 
-          <div>
-            <h3
-              class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3"
-            >
-              Advanced
-            </h3>
-            <nav class="space-y-1">
-              <a
-                href="/docs/forms.html"
-                class="sidebar-link block px-4 py-2 text-sm"
-              >
-                Forms
-              </a>
-              <a
-                href="/docs/semantic.html"
-                class="sidebar-link block px-4 py-2 text-sm"
-              >
-                Semantic HTML
-              </a>
-              <a
-                href="/docs/accessibility.html"
-                class="sidebar-link block px-4 py-2 text-sm"
-              >
-                Accessibility
-              </a>
-            </nav>
-          </div>-->
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th {
+      background: rgba(59, 130, 246, 0.05);
+      text-align: left;
+      padding: 1rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--primary-light);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    td {
+      padding: 1rem;
+      font-size: 0.875rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: #94a3b8;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+  </style>
+</head>
+
+<body class="text-slate-50">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="sidebar w-64 fixed h-screen overflow-y-auto z-20">
+      <div class="p-6">
+        <a href="../../index.html" class="flex items-center gap-2 mb-8 group">
+          <i data-lucide="sparkles" class="w-6 h-6 text-blue-400 group-hover:rotate-12 transition-transform"></i>
+          <span class="font-bold text-xl gradient-text">LumenLabs</span>
+        </a>
+
+        <div class="mb-8">
+          <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-4 px-4">
+            Getting Started
+          </h3>
+          <nav class="space-y-1">
+            <a href="introduction.html"
+              class="sidebar-link block px-4 py-2.5 text-sm rounded-lg mx-2 transition-all text-slate-400">
+              Introduction
+            </a>
+            <a href="installation.html"
+              class="sidebar-link active block px-4 py-2.5 text-sm rounded-lg mx-2 transition-all">
+              Installation
+            </a>
+            <a href="webserver.html"
+              class="sidebar-link block px-4 py-2.5 text-sm rounded-lg mx-2 transition-all text-slate-400">
+              WebServer
+            </a>
+          </nav>
         </div>
-      </aside>
+      </div>
+    </aside>
 
-      <main class="ml-64 flex-1">
-        <div class="max-w-4xl mx-auto px-8 py-12">
-          <header class="mb-12">
-            <h1 class="text-4xl font-bold mb-4">Installation</h1>
-            <p class="text-slate-400">
-              Set up and launch LumenOne with this installation guide.
+    <!-- Main Content -->
+    <main class="ml-64 flex-1 relative">
+      <div class="max-w-4xl mx-auto px-8 py-16">
+        <header class="mb-12 animate-fade-in-up">
+          <div class="flex items-center gap-2 text-blue-400 text-sm font-medium mb-4">
+            <i data-lucide="download" class="w-4 h-4"></i>
+            LumenOne Documentation
+          </div>
+          <h1 class="text-5xl font-extrabold mb-6 gradient-text">Installation</h1>
+          <p class="text-xl text-slate-400 leading-relaxed">
+            Set up and launch LumenOne with this comprehensive installation guide.
+          </p>
+        </header>
+
+        <div class="space-y-16 animate-fade-in-up animate-delay-100">
+          <!-- OS Section -->
+          <section id="picking-os">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+              <i data-lucide="server" class="w-8 h-8 text-blue-400"></i>
+              Picking a Server OS
+            </h2>
+            <p class="text-slate-400 mb-8 leading-relaxed">
+              LumenOne runs on a wide range of operating systems. We recommend using a stable Linux distribution for the
+              best performance and security.
             </p>
-          </header>
 
-          <div class="space-y-12">
-            <section id="introduction">
-              <h2 class="text-2xl font-semibold mb-6">Picking a Server OS</h2>
-              <div class="prose prose-invert">
-                <p class="text-slate-300 mb-4">
-                  LumenOne runs on a wide range of operating systems, so pick
-                  whichever you are most comfortable using.
-                </p>
+            <div class="overflow-hidden glass rounded-xl">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Operating System</th>
+                    <th>Version</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="font-medium text-slate-200">Debian</td>
+                    <td>10 & 11</td>
+                    <td>Tested and recommended. No major complications.</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-slate-200">Ubuntu</td>
+                    <td>20.04 LTS, 22.04 LTS</td>
+                    <td>Full support, works without a hitch.</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-slate-200">Windows</td>
+                    <td>10, Server 2019</td>
+                    <td>Beware of compatibility with certain dependencies.</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-slate-200">CentOS</td>
+                    <td>7, 8</td>
+                    <td>Works, but adjustments are sometimes necessary.</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-slate-200">Fedora</td>
+                    <td>34+</td>
+                    <td>Full support, but often requires recent package updates.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
 
-                <div class="overflow-x-auto py-6">
-                  <table
-                    class="min-w-full bg-transparent text-white rounded-lg shadow-md"
-                  >
-                    <thead>
-                      <tr class="border-b border-white/20">
-                        <th class="py-3 px-6 text-left text-sm font-medium">
-                          Operating System
-                        </th>
-                        <th class="py-3 px-6 text-left text-sm font-medium">
-                          Version
-                        </th>
-                        <th class="py-3 px-6 text-left text-sm font-medium">
-                          Notes
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="border-b border-white/20">
-                        <td class="py-4 px-6 text-sm font-medium">Debian</td>
-                        <td class="py-4 px-6 text-sm">10 & 11</td>
-                        <td class="py-4 px-6 text-sm">
-                          Tested and recommended. No major complications.
-                        </td>
-                      </tr>
-                      <tr class="border-b border-white/20">
-                        <td class="py-4 px-6 text-sm font-medium">Ubuntu</td>
-                        <td class="py-4 px-6 text-sm">20.04 LTS, 22.04 LTS</td>
-                        <td class="py-4 px-6 text-sm">
-                          Full support, works without a hitch.
-                        </td>
-                      </tr>
-                      <tr class="border-b border-white/20">
-                        <td class="py-4 px-6 text-sm font-medium">Windows</td>
-                        <td class="py-4 px-6 text-sm">
-                          Windows 10, Windows Server 2019
-                        </td>
-                        <td class="py-4 px-6 text-sm">
-                          Beware of compatibility with certain dependencies.
-                        </td>
-                      </tr>
-                      <tr class="border-b border-white/20">
-                        <td class="py-4 px-6 text-sm font-medium">CentOS</td>
-                        <td class="py-4 px-6 text-sm">7, 8</td>
-                        <td class="py-4 px-6 text-sm">
-                          Works, but adjustments are sometimes necessary.
-                        </td>
-                      </tr>
-                      <tr class="border-b border-white/20">
-                        <td class="py-4 px-6 text-sm font-medium">Fedora</td>
-                        <td class="py-4 px-6 text-sm">34 et plus</td>
-                        <td class="py-4 px-6 text-sm">
-                          Full support, but often requires recent package
-                          updates.
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+          <!-- Dependencies Section -->
+          <section id="dependencies">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+              <i data-lucide="box" class="w-8 h-8 text-blue-400"></i>
+              Dependency Installation
+            </h2>
+            <p class="text-slate-400 mb-6">Update your system and install the required packages.</p>
+            <div class="code-block">
+              <pre>apt update -y && apt upgrade -y
+apt install nodejs -y && apt install nginx -y && apt install git -y && apt install npm -y</pre>
+            </div>
+          </section>
+
+          <!-- Download Section -->
+          <section id="download">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+              <i data-lucide="git-branch" class="w-8 h-8 text-blue-400"></i>
+              Download Files
+            </h2>
+            <p class="text-slate-400 mb-6">Clone the LumenOne repository into your web directory.</p>
+            <div class="code-block">
+              <pre>cd /var/www/
+git clone https://github.com/lumenlabss/LumenOne.git</pre>
+            </div>
+          </section>
+
+          <!-- Configuration Section -->
+          <section id="configuration">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+              <i data-lucide="settings-2" class="w-8 h-8 text-blue-400"></i>
+              Configuration
+            </h2>
+            <p class="text-slate-400 mb-6">Configure LumenOne by editing the <code
+                class="text-blue-400">config.json</code> file.</p>
+
+            <div class="glass p-6 rounded-xl space-y-6">
+              <div>
+                <p class="text-sm text-slate-500 mb-3">Navigate to the folder:</p>
+                <div class="code-block">
+                  <pre>cd LumenOne</pre>
                 </div>
               </div>
-            </section>
 
-            <section id="Dependency">
-              <h2 class="text-2xl font-semibold mb-6">
-                Dependency Installation
-              </h2>
-
-              <div class="glass rounded-xl p-6 mb-6">
-                <div class="code-block rounded-lg p-4 mb-6 font-mono text-sm">
-                  <pre class="text-slate-300">
-apt update -y && apt upgrade -y
-apt install nodejs -y && apt install nginx -y && apt install Git -y && apt install npm -y
-</pre
-                  >
+              <div>
+                <p class="text-sm text-slate-500 mb-3">Open the config file:</p>
+                <div class="code-block">
+                  <pre>nano config/config.json</pre>
                 </div>
               </div>
-            </section>
-          </div>
 
-          <div class="space-y-12">
-            <section id="Dependency">
-              <h2 class="text-2xl font-semibold mb-6">Download Files</h2>
-              <p class="text-slate-300">
-                The first step in this process is to access the Nginx site file
-                where the dashboard will be located, and then clone the LumenOne
-                repo.
-              </p>
-              <br />
-              <div class="glass rounded-xl p-6 mb-6">
-                <div class="code-block rounded-lg p-4 mb-6 font-mono text-sm">
-                  <pre class="text-slate-300">
-cd /var/www/
-git clone https://github.com/lumenlabss/LumenOne.git
-</pre
-                  >
-                </div>
-              </div>
-            </section>
-          </div>
-
-          <div class="space-y-12">
-            <section
-              id="Installation
-            "
-            >
-              <h2 class="text-2xl font-semibold mb-6">Installation</h2>
-              <p class="text-slate-300">Now we'll configure LumenOne</p>
-              <br />
-              <div class="glass rounded-xl p-6 mb-6">
-                <p class="text-slate-300">First to the LumenOne folder</p>
-                <br />
-                <div class="code-block rounded-lg p-4 mb-6 font-mono text-sm">
-                  <pre class="text-slate-300">
-cd LumenOne
-</pre
-                  >
-                </div>
-              </div>
-              <div class="glass rounded-xl p-6 mb-6">
-                <p class="text-slate-300">
-                  We will now configure LumenOne via config.json, replace
-                  hostname by the ip of your VPS, port by the port you want the
-                  nodeJS app to use (don't use 8080). Change the secret key to a
-                  secure key. If you're using https, change the secure false to
-                  secure true.
-                </p>
-                <br />
-                <div class="code-block rounded-lg p-4 mb-6 font-mono text-sm">
-                  <pre class="text-slate-300">
-nano config/config.json
-</pre
-                  >
-                </div>
-
-                <div class="code-block rounded-lg p-4 mb-6 font-mono text-sm">
-                  <pre class="text-slate-300">
-{
+              <div>
+                <p class="text-sm text-slate-500 mb-3">Example configuration:</p>
+                <div class="code-block text-xs">
+                  <pre>{
   "hostname": "localhost",
   "port": 3000,
   "name": "LumenOne",
   "version": "Pre-Alpha",
   "session": {
-    "secret": "secret-key",
+    "secret": "your-secure-secret-key",
     "resave": false,
-  "saveUninitialized": false,
-  "cookie": {
-    "secure": false
+    "saveUninitialized": false,
+    "cookie": {
+      "secure": false
     }
   }
-}</pre
-                  >
+}</pre>
                 </div>
               </div>
-              <div
-                class="bg-slate-800/50 border border-slate-700/50 rounded-xl p-6"
-              >
-                <h3 class="text-lg font-medium mb-4 flex items-center gap-2">
-                  <i
-                    data-lucide="lightbulb"
-                    class="h-5 w-5 text-yellow-400"
-                  ></i>
-                  Tip
-                </h3>
-                <p class="text-slate-300">
-                  To configure the web server (Nginx) go to WebServer
-                </p>
-              </div>
-            </section>
-          </div>
-          <br />
-           <div class="space-y-12">
-            <section id="Dependency">
-              <h2 class="text-2xl font-semibold mb-6">independice nodeJS</h2>
-              <p class="text-slate-300">
-                Now install independice nodeJS
+            </div>
+
+            <div class="mt-8 bg-blue-600/10 border border-blue-600/20 rounded-xl p-6 flex items-start gap-4">
+              <i data-lucide="lightbulb" class="w-6 h-6 text-yellow-500 shrink-0 mt-1"></i>
+              <p class="text-slate-300 text-sm leading-relaxed">
+                <strong class="text-blue-400">Tip:</strong> To configure the web server (Nginx), please refer to the <a
+                  href="webserver.html" class="underline hover:text-blue-300">WebServer documentation</a>.
               </p>
-              <br />
-              <div class="glass rounded-xl p-6 mb-6">
-                <div class="code-block rounded-lg p-4 mb-6 font-mono text-sm">
-                  <pre class="text-slate-300">
-npm install
-</pre
-                  >
-                </div>
-                </div>
-           
-          <div class="space-y-12">
-            <section id="Dependency">
-              <h2 class="text-2xl font-semibold mb-6">Execut LumenOne</h2>
-              <p class="text-slate-300">
-                Now that the installation is complete, you can run LumenOne
-              </p>
-              <br />
-              <div class="glass rounded-xl p-6 mb-6">
-                <div class="code-block rounded-lg p-4 mb-6 font-mono text-sm">
-                  <pre class="text-slate-300">
-node lumenone.js
+            </div>
+          </section>
 
-or
-
-pm2 lumenone.js
-</pre
-                  >
-                </div>
+          <!-- Final Steps Section -->
+          <section id="execution">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+              <i data-lucide="play" class="w-8 h-8 text-blue-400"></i>
+              Execution
+            </h2>
+            <p class="text-slate-400 mb-6">Install Node.js dependencies and start the application.</p>
+            <div class="space-y-6">
+              <div class="code-block">
+                <pre>npm install</pre>
               </div>
-            </section>
-          </div>
-
-          <div
-            class="flex justify-between items-center mt-12 pt-8 border-t border-slate-700"
-          >
-            <a
-              href="introduction.html"
-              class="flex items-center gap-2 text-slate-400 hover:text-sky-400 transition-colors"
-            >
-              <i data-lucide="arrow-left" class="h-4 w-4"></i>
-              Previous: Introduction
-            </a>
-            <a
-              href="webserver.html"
-              class="flex items-center gap-2 text-slate-400 hover:text-sky-400 transition-colors"
-            >
-              Next: WebServer
-              <i data-lucide="arrow-right" class="h-4 w-4"></i>
-            </a>
-          </div>
+              <p class="text-slate-400">Run LumenOne using node or a process manager like PM2:</p>
+              <div class="code-block">
+                <pre>node lumenone.js
+# or
+pm2 start lumenone.js</pre>
+              </div>
+            </div>
+          </section>
         </div>
-      </main>
-    </div>
 
-    <footer class="py-10 text-center text-sm text-gray-500">
-      © 2025 LumenLabs. All rights reserved.
-    </footer>
+        <!-- Navigation -->
+        <div class="flex justify-between items-center mt-20 pt-8 border-t border-slate-800 animate-fade-in-up">
+          <a href="introduction.html"
+            class="flex items-center gap-3 px-6 py-3 bg-slate-800/50 hover:bg-slate-800 text-slate-400 rounded-xl transition-all group font-medium border border-slate-700/50">
+            <i data-lucide="arrow-left" class="w-4 h-4 group-hover:-translate-x-1 transition-transform"></i>
+            Previous: Introduction
+          </a>
+          <a href="webserver.html"
+            class="flex items-center gap-3 px-6 py-3 bg-blue-600/10 hover:bg-blue-600/20 text-blue-400 rounded-xl transition-all group font-medium border border-blue-600/20">
+            Next: WebServer
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
 
-    <script>
-      lucide.createIcons();
+  <footer class="py-12 text-center text-sm text-slate-600 border-t border-slate-900 ml-64">
+    © 2025 LumenLabs. All rights reserved.
+  </footer>
 
-      // Highlight active TOC link based on scroll position
-      const sections = document.querySelectorAll("section[id]");
-      const tocLinks = document.querySelectorAll(".toc-link");
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
 
-      function highlightTOC() {
-        const scrollPos = window.scrollY;
-
-        sections.forEach((section) => {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.clientHeight;
-          const sectionId = section.getAttribute("id");
-
-          if (
-            scrollPos >= sectionTop - 100 &&
-            scrollPos < sectionTop + sectionHeight - 100
-          ) {
-            tocLinks.forEach((link) => {
-              link.classList.remove("active");
-              if (link.getAttribute("href").includes(sectionId)) {
-                link.classList.add("active");
-              }
-            });
-          }
-        });
-      }
-
-      window.addEventListener("scroll", highlightTOC);
-    </script>
-  </body>
 </html>

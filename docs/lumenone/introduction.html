@@ -1,219 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LumenLabs - Docs - LumenOne</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@0.276.0/dist/umd/lucide.min.js"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-        background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-        min-height: 100vh;
-        background-attachment: fixed;
-      }
 
-      .glass {
-        background: rgba(30, 41, 59, 0.7);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LumenLabs - Docs - LumenOne Introduction</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --primary: #3b82f6;
+      --primary-light: #60a5fa;
+      --dark: #111827;
+      --darker: #0a0e1a;
+    }
 
-      .sidebar {
-        background: rgba(15, 23, 42, 0.8);
-        backdrop-filter: blur(12px);
-        border-right: 1px solid rgba(255, 255, 255, 0.1);
-      }
+    body {
+      font-family: "Inter", sans-serif;
+      background: linear-gradient(135deg, var(--darker), var(--dark));
+      color: #f3f4f6;
+      min-height: 100vh;
+    }
 
-      .sidebar-link {
-        transition: all 0.3s ease;
-        border-left: 2px solid transparent;
-      }
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-      .sidebar-link:hover {
-        background: rgba(56, 189, 248, 0.1);
-        border-left-color: rgba(56, 189, 248, 0.5);
-      }
+    .glass {
+      background: rgba(17, 24, 39, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
 
-      .sidebar-link.active {
-        background: rgba(56, 189, 248, 0.1);
-        border-left-color: rgb(56, 189, 248);
-      }
+    .sidebar {
+      background: rgba(10, 14, 26, 0.8);
+      backdrop-filter: blur(12px);
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
 
-      .code-block {
-        background: rgba(15, 23, 42, 0.6);
-        border: 1px solid rgba(56, 189, 248, 0.2);
-      }
+    .sidebar-link {
+      transition: all 0.3s ease;
+      border-right: 2px solid transparent;
+    }
 
-      .toc-link {
-        transition: all 0.3s ease;
-        border-left: 2px solid transparent;
-      }
+    .sidebar-link:hover {
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--primary-light);
+    }
 
-      .toc-link:hover,
-      .toc-link.active {
-        color: rgb(56, 189, 248);
-        border-left-color: rgb(56, 189, 248);
-      }
-    </style>
-  </head>
-  <body class="text-slate-50">
-    <div class="flex min-h-screen">
-      <aside class="sidebar w-64 fixed h-screen overflow-y-auto">
-        <div class="p-6">
-          <a href="/" class="flex items-center gap-2 mb-8">
-            <!--<i data-lucide="code" class="h-6 w-6 text-sky-400"></i>-->
-            <span class="font-semibold text-lg">LumenOne</span>
-          </a>
+    .sidebar-link.active {
+      background: rgba(59, 130, 246, 0.15);
+      color: var(--primary-light);
+      border-right-color: var(--primary);
+    }
 
-          <div class="mb-8">
-            <h3
-              class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3"
-            >
-              Getting Started
-            </h3>
-            <nav class="space-y-1">
-              <a href="#" class="sidebar-link active block px-4 py-2 text-sm">
-                Introduction
-              </a>
-              <a
-                href="installation.html"
-                class="sidebar-link block px-4 py-2 text-sm"
-              >
-                Installation
-              </a>
-              <a
-                href="webserver.html"
-                class="sidebar-link block px-4 py-2 text-sm"
-              >
-                WebServer
-              </a>
-            </nav>
-          </div>
+    .code-block {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 1rem;
+      font-family: monospace;
+    }
+  </style>
+</head>
 
-          <!--<div class="mb-8">
-            <h3
-              class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3"
-            >
-              Fundamentals
-            </h3>
-            <nav class="space-y-1">
-              <a
-                href="/docs/basics.html"
-                class="sidebar-link active block px-4 py-2 text-sm"
-              >
-                HTML Basics
-              </a>
-              <a
-                href="/docs/elements.html"
-                class="sidebar-link block px-4 py-2 text-sm"
-              >
-                Elements
-              </a>
-              <a
-                href="/docs/attributes.html"
-                class="sidebar-link block px-4 py-2 text-sm"
-              >
-                Attributes
-              </a>
-            </nav>
-          </div>
+<body class="text-slate-50">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="sidebar w-64 fixed h-screen overflow-y-auto z-20">
+      <div class="p-6">
+        <a href="../../index.html" class="flex items-center gap-2 mb-8 group">
+          <i data-lucide="sparkles" class="w-6 h-6 text-blue-400 group-hover:rotate-12 transition-transform"></i>
+          <span class="font-bold text-xl gradient-text">LumenLabs</span>
+        </a>
 
-          <div>
-            <h3
-              class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3"
-            >
-              Advanced
-            </h3>
-            <nav class="space-y-1">
-              <a
-                href="/docs/forms.html"
-                class="sidebar-link block px-4 py-2 text-sm"
-              >
-                Forms
-              </a>
-              <a
-                href="/docs/semantic.html"
-                class="sidebar-link block px-4 py-2 text-sm"
-              >
-                Semantic HTML
-              </a>
-              <a
-                href="/docs/accessibility.html"
-                class="sidebar-link block px-4 py-2 text-sm"
-              >
-                Accessibility
-              </a>
-            </nav>
-          </div>-->
-        </div>
-      </aside>
-
-      <main class="ml-64 flex-1">
-        <div class="max-w-4xl mx-auto px-8 py-12">
-          <header class="mb-12">
-            <h1 class="text-4xl font-bold mb-4">Introduction</h1>
-            <p class="text-slate-400">
-              LumenOne is the open-source website management panel developed
-              with Node.js. It lets you easily manage your projects thanks to a
-              modern, intuitive and high-performance interface, designed for
-              developers and hosting providers.
-            </p>
-          </header>
-          <div
-            class="flex justify-between items-center mt-12 pt-8 border-t border-slate-700"
-          >
-            <a
-              href="installation.html"
-              class="flex items-center gap-2 text-slate-400 hover:text-sky-400 transition-colors"
-            >
-              Next: Installation
-              <i data-lucide="arrow-right" class="h-4 w-4"></i>
+        <div class="mb-8">
+          <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-4 px-4">
+            Getting Started
+          </h3>
+          <nav class="space-y-1">
+            <a href="introduction.html"
+              class="sidebar-link active block px-4 py-2.5 text-sm rounded-lg mx-2 transition-all">
+              Introduction
             </a>
-          </div>
+            <a href="installation.html"
+              class="sidebar-link block px-4 py-2.5 text-sm rounded-lg mx-2 transition-all text-slate-400">
+              Installation
+            </a>
+            <a href="webserver.html"
+              class="sidebar-link block px-4 py-2.5 text-sm rounded-lg mx-2 transition-all text-slate-400">
+              WebServer
+            </a>
+          </nav>
         </div>
-      </main>
-    </div>
+      </div>
+    </aside>
 
-    <footer class="py-10 text-center text-sm text-gray-500">
-      © 2025 LumenLabs. All rights reserved.
-    </footer>
+    <!-- Main Content -->
+    <main class="ml-64 flex-1 relative">
+      <div class="max-w-4xl mx-auto px-8 py-16">
+        <header class="mb-12 animate-fade-in-up">
+          <div class="flex items-center gap-2 text-blue-400 text-sm font-medium mb-4">
+            <i data-lucide="book-open" class="w-4 h-4"></i>
+            LumenOne Documentation
+          </div>
+          <h1 class="text-5xl font-extrabold mb-6 gradient-text">Introduction</h1>
+          <p class="text-xl text-slate-400 leading-relaxed">
+            LumenOne is the open-source website management panel developed
+            with Node.js. It lets you easily manage your projects thanks to a
+            modern, intuitive and high-performance interface, designed for
+            developers and hosting providers.
+          </p>
+        </header>
 
-    <script>
-      lucide.createIcons();
+        <div class="glass p-8 rounded-2xl mb-12 animate-fade-in-up animate-delay-100">
+          <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+            <i data-lucide="zap" class="w-6 h-6 text-yellow-400"></i>
+            Why LumenOne?
+          </h2>
+          <p class="text-slate-300 leading-relaxed mb-4">
+            Our mission is to provide a free, powerful alternative to proprietary hosting panels. LumenOne combines
+            simplicity with professional features to give you full control over your web infrastructure.
+          </p>
+          <ul class="space-y-3 text-slate-400">
+            <li class="flex items-center gap-2">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+              Modern Tech Stack (Node.js)
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+              Intuitive User Interface
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
+              Extensible & Open Source
+            </li>
+          </ul>
+        </div>
 
-      // Highlight active TOC link based on scroll position
-      const sections = document.querySelectorAll("section[id]");
-      const tocLinks = document.querySelectorAll(".toc-link");
+        <div
+          class="flex justify-between items-center mt-16 pt-8 border-t border-slate-800 animate-fade-in-up animate-delay-200">
+          <div></div>
+          <a href="installation.html"
+            class="flex items-center gap-3 px-6 py-3 bg-blue-600/10 hover:bg-blue-600/20 text-blue-400 rounded-xl transition-all group font-medium border border-blue-600/20">
+            Next: Installation
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
 
-      function highlightTOC() {
-        const scrollPos = window.scrollY;
+  <footer class="py-12 text-center text-sm text-slate-600 border-t border-slate-900 ml-64">
+    © 2025 LumenLabs. All rights reserved.
+  </footer>
 
-        sections.forEach((section) => {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.clientHeight;
-          const sectionId = section.getAttribute("id");
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
 
-          if (
-            scrollPos >= sectionTop - 100 &&
-            scrollPos < sectionTop + sectionHeight - 100
-          ) {
-            tocLinks.forEach((link) => {
-              link.classList.remove("active");
-              if (link.getAttribute("href").includes(sectionId)) {
-                link.classList.add("active");
-              }
-            });
-          }
-        });
-      }
-
-      window.addEventListener("scroll", highlightTOC);
-    </script>
-  </body>
 </html>
