@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LumenLabs - Docs - LumenOne API</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-light: #60a5fa;
+            --dark: #111827;
+            --darker: #0a0e1a;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: #f3f4f6;
+            min-height: 100vh;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass {
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .sidebar {
+            background: rgba(10, 14, 26, 0.8);
+            backdrop-filter: blur(12px);
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .sidebar-link {
+            transition: all 0.3s ease;
+            border-right: 2px solid transparent;
+        }
+
+        .sidebar-link:hover {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary-light);
+        }
+
+        .sidebar-link.active {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--primary-light);
+            border-right-color: var(--primary);
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.25rem;
+            font-family: 'Fira Code', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+
+        .method-badge {
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .method-get {
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .method-post {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .method-put {
+            background: rgba(234, 179, 8, 0.2);
+            color: #facc15;
+            border: 1px solid rgba(234, 179, 8, 0.3);
+        }
+
+        .method-delete {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+    </style>
+</head>
+
+<body class="text-slate-50">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="sidebar w-64 fixed h-screen overflow-y-auto z-20">
+            <div class="p-6">
+                <a href="../../index.html" class="flex items-center gap-2 mb-8 group">
+                    <i data-lucide="sparkles"
+                        class="w-6 h-6 text-blue-400 group-hover:rotate-12 transition-transform"></i>
+                    <span class="font-bold text-xl gradient-text">LumenLabs</span>
+                </a>
+
+                <div class="mb-8">
+                    <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-4 px-4">
+                        Getting Started
+                    </h3>
+                    <nav class="space-y-1">
+                        <a href="introduction.html"
+                            class="sidebar-link block px-4 py-2.5 text-sm rounded-lg mx-2 transition-all text-slate-400">
+                            Introduction
+                        </a>
+                        <a href="installation.html"
+                            class="sidebar-link block px-4 py-2.5 text-sm rounded-lg mx-2 transition-all text-slate-400">
+                            Installation
+                        </a>
+                        <a href="webserver.html"
+                            class="sidebar-link block px-4 py-2.5 text-sm rounded-lg mx-2 transition-all text-slate-400">
+                            WebServer
+                        </a>
+                        <a href="api.html"
+                            class="sidebar-link active block px-4 py-2.5 text-sm rounded-lg mx-2 transition-all">
+                            API
+                        </a>
+                    </nav>
+                </div>
+
+                <div class="mb-8">
+                    <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-4 px-4">
+                        Modules
+                    </h3>
+                    <nav class="space-y-1">
+                        <a href="create-modules.html"
+                            class="sidebar-link block px-4 py-2.5 text-sm rounded-lg mx-2 transition-all text-slate-400">
+                            Creating Modules
+                        </a>
+                        <a href="module-setup.html"
+                            class="sidebar-link block px-4 py-2.5 text-sm rounded-lg mx-2 transition-all text-slate-400">
+                            Module Setup
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="ml-64 flex-1 relative">
+            <div class="max-w-4xl mx-auto px-8 py-16">
+                <header class="mb-12 animate-fade-in-up">
+                    <div class="flex items-center gap-2 text-blue-400 text-sm font-medium mb-4">
+                        <i data-lucide="code" class="w-4 h-4"></i>
+                        LumenOne Documentation
+                    </div>
+                    <h1 class="text-5xl font-extrabold mb-6 gradient-text">API Reference</h1>
+                    <p class="text-xl text-slate-400 leading-relaxed">
+                        Integrate LumenOne with your own tools using our public API. Perfect for Discord bots, custom
+                        automation, and third-party integrations.
+                    </p>
+                </header>
+
+                <!-- Authentication -->
+                <section class="glass p-8 rounded-2xl mb-12">
+                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2 text-white">
+                        <i data-lucide="key" class="w-6 h-6 text-yellow-400"></i>
+                        Authentication
+                    </h2>
+                    <p class="text-slate-300 mb-6">
+                        All API requests must include an API key in the request headers. You can generate your
+                        key in the <code class="text-blue-400">settings</code> page.
+                    </p>
+                    <div class="code-block">
+                        <div class="text-slate-500 mb-2"># Example Header</div>
+                        <span class="text-blue-400">x-api-key:</span> <span
+                            class="text-green-400">your_api_key_here</span>
+                    </div>
+                </section>
+
+                <!-- Endpoints Table of Contents -->
+                <div class="mb-12">
+                    <h3 class="text-lg font-semibold mb-4 text-slate-200">Available Endpoints</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <a href="#users"
+                            class="glass p-4 rounded-xl hover:bg-blue-600/5 transition-colors border-l-4 border-blue-500">
+                            <h4 class="font-bold flex items-center gap-2"><i data-lucide="users" class="w-4 h-4"></i>
+                                Users API</h4>
+                            <p class="text-xs text-slate-500">Manage user accounts and permissions.</p>
+                        </a>
+                        <a href="#websites"
+                            class="glass p-4 rounded-xl hover:bg-green-600/5 transition-colors border-l-4 border-green-500">
+                            <h4 class="font-bold flex items-center gap-2"><i data-lucide="globe" class="w-4 h-4"></i>
+                                Websites API</h4>
+                            <p class="text-xs text-slate-500">Manage hosted websites and ownership.</p>
+                        </a>
+                    </div>
+                </div>
+
+                <hr class="border-slate-800 mb-12">
+
+                <!-- Test Endpoint -->
+                <div class="mb-16">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span class="method-badge method-get">GET</span>
+                        <h3 class="text-xl font-mono text-blue-300">/api/v1/test</h3>
+                    </div>
+                    <p class="text-slate-400 mb-6">Verify your API key and connection stability.</p>
+                    <div class="code-block">
+                        {
+                        "success": true,
+                        "message": "Valid API key, route works."
+                        }
+                    </div>
+                </div>
+
+                <!-- Users Section -->
+                <section id="users" class="mb-20">
+                    <h2 class="text-3xl font-bold mb-8 text-white flex items-center gap-3">
+                        <i data-lucide="users" class="w-8 h-8 text-blue-500"></i>
+                        Users Management
+                    </h2>
+
+                    <!-- Get All Users -->
+                    <div class="mb-12 ml-4 border-l-2 border-slate-800 pl-6">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="method-badge method-get">GET</span>
+                            <h3 class="text-lg font-mono text-blue-300">/api/v1/users</h3>
+                        </div>
+                        <p class="text-slate-400 mb-4">Fetch a list of all users registered in the system.</p>
+                        <div class="code-block">
+                            {
+                            "success": true,
+                            "users": [
+                            { "id": 1, "username": "admin", "rank": "admin", ... }
+                            ]
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Create User -->
+                    <div class="mb-12 ml-4 border-l-2 border-slate-800 pl-6">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="method-badge method-post">POST</span>
+                            <h3 class="text-lg font-mono text-blue-300">/api/v1/users</h3>
+                        </div>
+                        <p class="text-slate-400 mb-4">Create a new user. Required fields: <code
+                                class="text-blue-400">username</code>, <code class="text-blue-400">password</code>,
+                            <code class="text-blue-400">rank</code>.
+                        </p>
+                        <div class="mb-4">
+                            <span class="text-xs font-bold text-slate-500 uppercase">Body Parameters</span>
+                            <div class="mt-2 text-sm text-slate-400">
+                                • <code class="text-slate-200">rank</code>: Must be <code
+                                    class="text-green-400">"admin"</code> or <code
+                                    class="text-green-400">"default"</code>.
+                            </div>
+                        </div>
+                        <div class="code-block">
+                            {
+                            "success": true,
+                            "message": "User created",
+                            "userId": 42
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Update User -->
+                    <div class="mb-12 ml-4 border-l-2 border-slate-800 pl-6">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="method-badge method-put">PUT</span>
+                            <h3 class="text-lg font-mono text-blue-300">/api/v1/users/:username</h3>
+                        </div>
+                        <p class="text-slate-400 mb-4">Update an existing user's password or rank.</p>
+                        <div class="code-block">
+                            {
+                            "success": true,
+                            "message": "User updated"
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Delete User -->
+                    <div class="mb-12 ml-4 border-l-2 border-slate-800 pl-6">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="method-badge method-delete">DELETE</span>
+                            <h3 class="text-lg font-mono text-blue-300">/api/v1/users/:username</h3>
+                        </div>
+                        <p class="text-slate-400 mb-4">Remove a user from the system permanently.</p>
+                    </div>
+                </section>
+
+                <!-- Websites Section -->
+                <section id="websites" class="mb-20">
+                    <h2 class="text-3xl font-bold mb-8 text-white flex items-center gap-3">
+                        <i data-lucide="globe" class="w-8 h-8 text-green-500"></i>
+                        Websites Management
+                    </h2>
+
+                    <!-- Get All Websites -->
+                    <div class="mb-12 ml-4 border-l-2 border-slate-800 pl-6">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="method-badge method-get">GET</span>
+                            <h3 class="text-lg font-mono text-blue-300">/api/v1/websites</h3>
+                        </div>
+                        <p class="text-slate-400 mb-4">Get all websites hosted on the panel.</p>
+                    </div>
+
+                    <!-- Get Websites by User -->
+                    <div class="mb-12 ml-4 border-l-2 border-slate-800 pl-6">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="method-badge method-get">GET</span>
+                            <h3 class="text-lg font-mono text-blue-300">/api/v1/websites/:userId</h3>
+                        </div>
+                        <p class="text-slate-400 mb-4">Fetch all websites belonging to a specific user ID.</p>
+                        <div class="code-block">
+                            {
+                            "success": true,
+                            "websites": [
+                            { "id": 1, "user_id": 1, "name": "My Project", "url": "https://example.com" }
+                            ]
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Create Website -->
+                    <div class="mb-12 ml-4 border-l-2 border-slate-800 pl-6">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="method-badge method-post">POST</span>
+                            <h3 class="text-lg font-mono text-blue-300">/api/v1/websites</h3>
+                        </div>
+                        <p class="text-slate-400 mb-4">Deploy a new website entry. Required: <code
+                                class="text-blue-400">userId</code>, <code class="text-blue-400">name</code>, <code
+                                class="text-blue-400">url</code>.</p>
+                        <div class="code-block">
+                            {
+                            "success": true,
+                            "message": "Website created",
+                            "websiteID": 12
+                            }
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Pagination/Navigation -->
+                <div class="flex justify-between items-center mt-16 pt-8 border-t border-slate-800">
+                    <a href="webserver.html"
+                        class="flex items-center gap-3 px-6 py-3 bg-blue-600/5 hover:bg-blue-600/10 text-slate-400 rounded-xl transition-all group font-medium border border-white/5">
+                        <i data-lucide="arrow-left" class="w-4 h-4 group-hover:-translate-x-1 transition-transform"></i>
+                        Back: WebServer
+                    </a>
+                    <a href="create-modules.html"
+                        class="flex items-center gap-3 px-6 py-3 bg-blue-600/10 hover:bg-blue-600/20 text-blue-400 rounded-xl transition-all group font-medium border border-blue-600/20">
+                        Next: Creating Modules
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="py-12 text-center text-sm text-slate-600 border-t border-slate-900 ml-64">
+        © 2025 LumenLabs. All rights reserved.
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
